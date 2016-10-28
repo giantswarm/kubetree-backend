@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: kubetree
+  name: backend
+  labels:
+    app: kubetree
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: backend
+      labels:
+        app: kubetree
+    spec:
+      containers:
+        - name: backend
+          image: giantswarm/kubetree-backend
+          ports:
+            - containerPort: 5000
+              name: http
